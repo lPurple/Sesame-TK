@@ -656,7 +656,7 @@ public class ApplicationHook {
 
                             Log.runtime(TAG, "Service onCreate");
                             appContext = appService.getApplicationContext();
-                            boolean isok = Detector.INSTANCE.isLegitimateEnvironment(appContext);
+                            boolean isok = Detector.INSTANCE.checkEnvironment(appContext);
                             if (isok) {
                                 Detector.INSTANCE.dangerous(appContext);
                                 return;

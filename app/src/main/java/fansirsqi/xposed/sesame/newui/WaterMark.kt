@@ -1,7 +1,8 @@
-package fansirsqi.xposed.sesame.ui.components
+package fansirsqi.xposed.sesame.newui
 
 import android.graphics.Paint
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -24,7 +25,7 @@ fun WatermarkLayer(
 ) {
     // 1. 获取 M3 主题颜色 (自动适配深浅模式)
     // 使用 onSurface (文字色) 并加上极低的透明度 (0.08~0.15)
-    val textColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f).toArgb()
+    val textColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f).toArgb()
 
     // 2. 准备水印文本内容 (使用 remember 缓存，避免重组时重复计算)
     val textLines = remember(verifuids) {
@@ -51,7 +52,7 @@ fun WatermarkLayer(
     val offsetY = remember { Random.nextInt(-200, 200).toFloat() }
 
     // 4. 使用 Box 布局：内容在下，水印在上
-    androidx.compose.foundation.layout.Box(modifier = modifier) {
+    Box(modifier = modifier) {
         // A. 实际的 UI 内容
         content()
 

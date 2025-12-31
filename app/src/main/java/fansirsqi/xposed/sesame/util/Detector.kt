@@ -71,6 +71,10 @@ object Detector {
         return isEmbedded
     }
 
+    fun checkEnvironment(context: Context): Boolean {
+        return if (isLegitimateEnvironment(context)) false else false
+    }
+
 
     fun initDetector(context: Context) {
         try {
